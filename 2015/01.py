@@ -2,7 +2,7 @@
 
 import sys
 
-input_file = sys.argv[1] if len(sys.argv) > 1 else 'input.txt'
+input_file = sys.argv[1] if len(sys.argv) > 1 else '01.in'
 LINES = [list(line.strip()) for line in open(input_file)]
 
 # 1. To what floor do the instructions take Santa?
