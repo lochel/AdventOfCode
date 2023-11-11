@@ -20,12 +20,10 @@ def _get_input_data():
     process = subprocess.Popen(cmd, shell=False, stdout=open(input_file, 'w'))
     process.wait()
 
-  data = open(input_file).read()
+  data = open(input_file).read().strip()
   lines = data.split('\n')
   number_of_lines = len(lines)
-
   print(f'input contains {number_of_lines} lines\n')
-
   return data, lines, number_of_lines
 
 DATA, LINES, N = _get_input_data()
