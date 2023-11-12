@@ -7,7 +7,6 @@ import aoc
 
 sys.setrecursionlimit(10000)
 
-
 # 1.
 # ----------------------------------------
 def problem1():
@@ -26,7 +25,6 @@ def problem1():
       if risk_point:
          answer += int(aoc.LINES[y][x]) + 1
   print(f'Answer 1: {answer}')
-
 
 # 2.
 # ----------------------------------------
@@ -67,7 +65,6 @@ def problem2():
   print(basins[:3])
   answer = math.prod(basins[:3])
   print(f'Answer 2: {answer}')
-
 
 # ----------------------------------------
 if __name__ == '__main__':

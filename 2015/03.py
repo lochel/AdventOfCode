@@ -1,16 +1,13 @@
 #!../.env/bin/python3
 
-import sys
-
-input_file = sys.argv[1] if len(sys.argv) > 1 else '03.in'
-LINES = [line.strip() for line in open(input_file)]
+import aoc
 
 # 1. How many houses receive at least one present?
 # ----------------------------------------
 def problem1():
   x, y = 0, 0
   houses = set([(x, y)])
-  for dir in LINES[0]:
+  for dir in aoc.DATA:
     if dir == '<': x -= 1
     elif dir == '>': x += 1
     elif dir == '^': y -= 1
@@ -25,7 +22,7 @@ def problem2():
   x, y = 0, 0
   a, b = 0, 0
   houses = set([(x, y)])
-  for idx,dir in enumerate(LINES[0]):
+  for idx,dir in enumerate(aoc.DATA):
     if idx % 2 == 0:
       if dir == '<': x -= 1
       elif dir == '>': x += 1

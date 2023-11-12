@@ -2,8 +2,7 @@
 
 import aoc
 
-LINES = aoc.parseLines(lambda line : line.split())
-
+aoc.parseLines(lambda line : line.split())
 
 # 1. How many positions does the tail of the rope visit at least once?
 # --------------------------------------
@@ -11,7 +10,7 @@ def problem1():
   T = 2*[(1, 1)]
   pos = set()
   pos.add(T[1])
-  for (action, n_steps) in LINES:
+  for (action, n_steps) in aoc.LINES:
     n_steps = int(n_steps)
     for step in range(n_steps):
       (x, y) = T[0]
@@ -43,14 +42,13 @@ def problem1():
       pos.add(T[1])
   return len(pos)
 
-
 # 2. How many positions does the tail of the rope visit at least once?
 # --------------------------------------
 def problem2():
   T = 10*[(1, 1)]
   pos = set()
   pos.add(T[9])
-  for (action, n_steps) in LINES:
+  for (action, n_steps) in aoc.LINES:
     n_steps = int(n_steps)
     for step in range(n_steps):
       # 1. Move HEAD
@@ -82,7 +80,6 @@ def problem2():
         T[knot] = (int(a), int(b))
       pos.add(T[9])
   return len(pos)
-
 
 # --------------------------------------
 if __name__ == '__main__':

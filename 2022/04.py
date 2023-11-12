@@ -2,13 +2,13 @@
 
 import aoc
 
-LINES = aoc.parseLines(lambda line : line.split(','))
+aoc.parseLines(lambda line : line.split(','))
 
 # 1. In how many assignment pairs does one range fully contain the other?
 # --------------------------------------
 def problem1():
   answer = 0
-  for [a, b] in LINES:
+  for [a, b] in aoc.LINES:
     a = [int(i) for i in a.split('-')]
     b = [int(i) for i in b.split('-')]
     if a[0] <= b[0] and a[1] >= b[1]:
@@ -17,12 +17,11 @@ def problem1():
       answer += 1
   return answer
 
-
 # 2. In how many assignment pairs do the ranges overlap?
 # --------------------------------------
 def problem2():
   answer = 0
-  for [a, b] in LINES:
+  for [a, b] in aoc.LINES:
     a = [int(i) for i in a.split('-')]
     b = [int(i) for i in b.split('-')]
     if a[0] <= b[0] <= a[1]:
@@ -34,7 +33,6 @@ def problem2():
     elif b[0] <= a[1] <= b[1]:
       answer += 1
   return answer
-
 
 # --------------------------------------
 if __name__ == '__main__':

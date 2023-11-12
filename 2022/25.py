@@ -2,9 +2,7 @@
 
 import aoc
 
-LINES = aoc.parseLines(lambda line : list(line))
-N = aoc.N
-
+aoc.parseLines(lambda line : list(line))
 
 def toDec(x):
   num = 0
@@ -27,16 +25,14 @@ def toSNAFU(x):
     x = x//5
   return s
 
-
 # 1. What SNAFU number do you supply to Bob's console?
 # ----------------------------------------
 def problem1():
   answer = 0
-  for line in LINES:
+  for line in aoc.LINES:
     answer += toDec(line)
 
   print(f'Answer 1: {toSNAFU(answer)}')
-
 
 # ----------------------------------------
 if __name__ == '__main__':

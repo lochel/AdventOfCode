@@ -10,7 +10,7 @@ aoc.replaceLines('clay. Each geode robot costs', ',')
 aoc.replaceLines('ore and', ',')
 aoc.replaceLines('obsidian.')
 aoc.replaceLines(' ')
-LINES = aoc.parseLines(lambda line : line.split(','))
+aoc.parseLines(lambda line : line.split(','))
 
 
 def enough_money(money, costs):
@@ -25,14 +25,13 @@ def enough_money(money, costs):
     more[3] = money[3] - costs[3]
   return min(more) == 0
 
-
 # Blueprint 1:
 #   Each ore robot costs 4 ore.
 #   Each clay robot costs 2 ore.
 #   Each obsidian robot costs 3 ore and 14 clay.
 #   Each geode robot costs 2 ore and 7 obsidian.
 BLUEPRINTS = []
-for line in LINES:
+for line in aoc.LINES:
   id, costs, clay, obsidian_a, obsidian_b, geode_a, geode_b = int(line[0]), int(
     line[1]), int(line[2]), int(line[3]), int(line[4]), int(line[5]), int(line[6])
   BLUEPRINTS.append(((costs, 0, 0, 0), (clay, 0, 0, 0),
@@ -104,7 +103,6 @@ def problem1():
 
   print(f'Answer 1: {answer}')
 
-
 # 2. What do you get if you multiply these numbers together?
 # ----------------------------------------
 def problem2():
@@ -113,7 +111,6 @@ def problem2():
   answer *= simRobot(1, 32, (1, 0, 0, 0), (0, 0, 0, 0))
   answer *= simRobot(2, 32, (1, 0, 0, 0), (0, 0, 0, 0))
   print(f'Answer 2: {answer}')
-
 
 # ----------------------------------------
 if __name__ == '__main__':

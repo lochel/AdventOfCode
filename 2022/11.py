@@ -4,16 +4,14 @@ from math import prod
 import aoc
 
 
-LINES = aoc.parseLines(lambda line : line.split())
-N = aoc.N
-
+aoc.parseLines(lambda line : line.split())
 
 # 1. What is the level of monkey business after 20 rounds of stuff-slinging simian shenanigans?
 # ----------------------------------------
 def problem1():
   monkeys = []
   monkey = {'score': 0}
-  for line in LINES:
+  for line in aoc.LINES:
     if len(line) == 0:
       continue
     elif line[0] == 'Monkey':
@@ -64,13 +62,12 @@ def problem1():
   answer = score[0]*score[1]
   print(f'Answer 1: {answer}')
 
-
 # 2. What is the level of monkey business after 10000 rounds?
 # ----------------------------------------
 def problem2():
   monkeys = []
   monkey = {'score': 0}
-  for line in LINES:
+  for line in aoc.LINES:
     if len(line) == 0:
       continue
     elif line[0] == 'Monkey':
@@ -121,7 +118,6 @@ def problem2():
   score.sort(reverse=True)
   answer = score[0]*score[1]
   print(f'Answer 2: {answer}')
-
 
 # ----------------------------------------
 if __name__ == '__main__':

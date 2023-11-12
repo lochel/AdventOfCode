@@ -1,13 +1,8 @@
 #!../.env/bin/python3
 
-from functools import cmp_to_key
-from math import prod
-
 import aoc
 
-LINES = aoc.parseLines(lambda line : line.split(' -> '))
-N = aoc.N
-
+aoc.parseLines(lambda line : line.split(' -> '))
 
 # 1. How many units of sand come to rest before sand starts flowing into the abyss below?
 # ----------------------------------------
@@ -15,7 +10,7 @@ def problem1():
   # Boundary box
   x0, y0 = 498,4
   x1, y1 = 498,4
-  for line in LINES:
+  for line in aoc.LINES:
     for i,_ in enumerate(line[1:]):
       a,b = line[i-1].split(',')
       c,d = line[i].split(',')
@@ -42,7 +37,7 @@ def problem1():
     cave.append((x1-x0+1)*['.'])
 
   # WALLS
-  for line in LINES:
+  for line in aoc.LINES:
     for idx,_ in enumerate(line[1:]):
       a,b = line[idx].split(',')
       c,d = line[idx+1].split(',')
@@ -76,13 +71,12 @@ def problem1():
     answer += 1
     cave[sY-y0][sX-x0] = 'o'
 
-
 # 2. How many units of sand come to rest?
 # ----------------------------------------
 def problem2():
   x0, y0 = 498,4
   x1, y1 = 498,4
-  for line in LINES:
+  for line in aoc.LINES:
     for i,_ in enumerate(line[1:]):
       a,b = line[i-1].split(',')
       c,d = line[i].split(',')
@@ -108,7 +102,7 @@ def problem2():
     cave.append((x1-x0+1)*['.'])
 
   # Walls
-  for line in LINES:
+  for line in aoc.LINES:
     for idx,_ in enumerate(line[1:]):
       a,b = line[idx].split(',')
       c,d = line[idx+1].split(',')
@@ -148,7 +142,6 @@ def problem2():
   #  print('')
   #print('')
   print(f'Answer 2: {answer}')
-
 
 # ----------------------------------------
 if __name__ == '__main__':

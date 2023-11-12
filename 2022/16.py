@@ -40,7 +40,6 @@ def calc_dist(A, B, visited):
       dist = min(dist, 1 + calc_dist(neighbor, B, new_visited))
   return dist
 
-
 # Calculate the distance matrix beforehand
 DIST = []
 for valve_id_y in range(len(MAPPING)):
@@ -132,20 +131,17 @@ def release_pressure2(A, B, open_valves, time_left_A, time_left_B, iteration=0):
   memo_release_pressure2[key] = pressure
   return pressure
 
-
 # 1. What is the most pressure you can release?
 # ----------------------------------------
 def problem1():
     answer = release_pressure(MAPPING['AA'], VALVES, 30)
     print(f'Answer 1: {answer}')
 
-
 # 2. With you and an elephant working together for 26 minutes, what is the most pressure you could release?
 # ----------------------------------------
 def problem2():
     answer = release_pressure2(MAPPING['AA'], MAPPING['AA'], VALVES, 26, 26)
     print(f'Answer 2: {answer}')
-
 
 # ----------------------------------------
 if __name__ == '__main__':

@@ -1,8 +1,6 @@
 #!../.env/bin/python3
 
-lines = [line.strip() for line in open('04.in')]
-N = len(lines)
-
+import aoc
 
 def won(board):
   for i in range(5):
@@ -13,7 +11,6 @@ def won(board):
       return True
   return False
 
-
 def newNumber2(a, b):
   if a != b:
     return a
@@ -21,10 +18,11 @@ def newNumber2(a, b):
 def newNumber(board, number):
   return [newNumber2(n, number) for n in board]
 
-
 # 1.
 # --------------------------------------
 def problem1():
+  lines = aoc.LINES
+  N = aoc.N
   boards = []
   for i in range(2, N, 6):
     board = lines[i].split(' ') + lines[i+1].split(' ') + lines[i+2].split(' ') + lines[i+3].split(' ') + lines[i+4].split(' ')
@@ -41,10 +39,11 @@ def problem1():
         answer1 = int(number) * sum(board)
         return answer1
 
-
 # 2.
 # --------------------------------------
 def problem2():
+  lines = aoc.LINES
+  N = aoc.N
   boards = []
   for i in range(2, N, 6):
     board = lines[i].split(' ') + lines[i+1].split(' ') + lines[i+2].split(' ') + lines[i+3].split(' ') + lines[i+4].split(' ')
@@ -62,7 +61,6 @@ def problem2():
         board = [int(n) for n in board if n != 'x']
         answer2 = int(number) * sum(board)
   return answer2
-
 
 # --------------------------------------
 if __name__ == '__main__':

@@ -5,7 +5,6 @@ import aoc
 LINES = aoc.LINES
 EMPTY = aoc.EMPTY
 
-
 # 1.
 # --------------------------------------
 def problem1():
@@ -24,7 +23,6 @@ def problem1():
   for l in stacks:
     answer += l[-1]
   return answer
-
 
 # 2.
 # --------------------------------------
@@ -49,7 +47,6 @@ def problem2():
   for l in stacks:
     answer += l[-1]
   return answer
-
 
 # --------------------------------------
 if __name__ == '__main__':

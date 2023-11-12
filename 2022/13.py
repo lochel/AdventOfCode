@@ -51,7 +51,6 @@ def cmp(lhs, rhs):
     return 1
   return -1
 
-
 # 1. What is the sum of the indices of those pairs?
 # ----------------------------------------
 def problem1():
@@ -65,7 +64,6 @@ def problem1():
     index += 1
 
   print(f'Answer 1: {answer}')
-
 
 # 2. What is the decoder key for the distress signal?
 # ----------------------------------------

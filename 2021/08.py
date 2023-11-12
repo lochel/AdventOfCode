@@ -2,11 +2,10 @@
 
 import aoc
 
-
 # 1.
 # ----------------------------------------
 def problem1():
-  lines = aoc.parseLines(lambda line : line.split(' | ')[1].split())
+  lines = [line.split(' | ')[1].split() for line in aoc.LINES]
   answer = 0
   for line in lines:
     for x in line:
@@ -14,13 +13,12 @@ def problem1():
         answer += 1
   print(f'Answer 1: {answer}')
 
-
 # 2.
 # ----------------------------------------
 def problem2():
   # be cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd edb | fdgacbe cefdb cefbgd gcbe
-  lines1 = aoc.parseLines(lambda line : line.split(' | ')[0].split())
-  lines2 = aoc.parseLines(lambda line : line.split(' | ')[1].split())
+  lines1 = [line.split(' | ')[0].split() for line in aoc.LINES]
+  lines2 = [line.split(' | ')[1].split() for line in aoc.LINES]
   answer = 0
 
   for (a, [x1, x2, x3, x4]) in zip(lines1, lines2):
@@ -92,7 +90,6 @@ def problem2():
     number = map[x1]*1000 + map[x2]*100 + map[x3]*10 + map[x4]
     answer += number
   print(f'Answer 2: {answer}')
-
 
 # ----------------------------------------
 if __name__ == '__main__':

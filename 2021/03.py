@@ -1,10 +1,8 @@
 #!../.env/bin/python3
 
-import sys
+import aoc
 
-answer1, answer2 = None, None
-input_file = sys.argv[1] if len(sys.argv) > 1 else '03.in'
-lines = [line.strip() for line in open(input_file)]
+lines = aoc.LINES
 
 # 1.
 # --------------------------------------

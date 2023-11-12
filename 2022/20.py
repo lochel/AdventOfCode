@@ -4,15 +4,14 @@ from collections import deque
 
 import aoc
 
-
 def printNumbers(NUM, IND):
   print(','.join([str(NUM[i]) for i in IND]))
-
 
 # 1. What is the sum of the three numbers that form the grove coordinates?
 # ----------------------------------------
 def problem1():
-  numbers = aoc.parseLines(int)
+  aoc.parseLines(int)
+  numbers = aoc.LINES
   indices = deque(list(range(aoc.N)))
 
   for k in range(aoc.N):
@@ -30,11 +29,10 @@ def problem1():
 
   print('Answer 1: ', numbers[indices[1000%aoc.N]] + numbers[indices[2000%aoc.N]] + numbers[indices[3000%aoc.N]])
 
-
 # 2. What is the sum of the three numbers that form the grove coordinates?
 # ----------------------------------------
 def problem2():
-  numbers = aoc.parseLines(lambda x : int(x)*811589153)
+  numbers = [x*811589153 for x in aoc.LINES]
   indices = deque(list(range(aoc.N)))
 
   for _ in range(10):
@@ -52,7 +50,6 @@ def problem2():
     indices.append(indices.popleft())
 
   print('Answer 2: ', numbers[indices[1000%aoc.N]] + numbers[indices[2000%aoc.N]] + numbers[indices[3000%aoc.N]])
-
 
 # ----------------------------------------
 if __name__ == '__main__':

@@ -1,16 +1,15 @@
 #!../.env/bin/python3
 
-import sys
+import aoc
 
-input_file = sys.argv[1] if len(sys.argv) > 1 else '01.in'
-LINES = [int(line.strip()) for line in open(input_file)]
+aoc.parseLines(int)
 
 # 1.
 # ----------------------------------------
 def problem1():
   answer = 0
-  old = LINES[0]
-  for x in LINES:
+  old = aoc.LINES[0]
+  for x in aoc.LINES:
     if x > old:
       answer += 1
     old = x
@@ -20,13 +19,13 @@ def problem1():
 # ----------------------------------------
 def problem2():
   answer = 0
-  old = sum(LINES[0:3])
-  for x in range(3, len(LINES)+1):
-    y = sum(LINES[x-3:x])
+  old = sum(aoc.LINES[0:3])
+  for x in range(3, aoc.N+1):
+    y = sum(aoc.LINES[x-3:x])
     if y > old:
       answer += 1
     old = y
-  print(f'Answer 1: {answer}')
+  print(f'Answer 2: {answer}')
 
 # ----------------------------------------
 if __name__ == '__main__':

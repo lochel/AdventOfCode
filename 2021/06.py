@@ -2,14 +2,12 @@
 
 from collections import defaultdict
 
-LINES = [line.strip() for line in open('06.in')]
-N = len(LINES)
-print(f'input contains {N} lines')
+import aoc
 
 # 1.
 # --------------------------------------
 def problem1():
-  for line in LINES:
+  for line in aoc.LINES:
     fish = [int(x) for x in line.split(',')]
     for i in range(80):
       fish = [x-1 for x in fish]
@@ -18,11 +16,10 @@ def problem1():
       fish = [6 if x<0 else x for x in fish]
     return len(fish)
 
-
 # 2.
 # --------------------------------------
 def problem2():
-  fish = [int(x) for x in LINES[0].split(',')]
+  fish = [int(x) for x in aoc.LINES[0].split(',')]
 
   X = defaultdict(int)
   for f in fish:
@@ -39,7 +36,6 @@ def problem2():
 
       X = Y
   return sum(X.values())
-
 
 # --------------------------------------
 if __name__ == '__main__':

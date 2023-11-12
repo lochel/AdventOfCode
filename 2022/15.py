@@ -1,11 +1,15 @@
 #!../.env/bin/python3
 
-from aoc import LINES
-LINES = [[int(x) for x in line.split(',')] for line in LINES]
+import aoc
+
+aoc.replaceLines('Sensor at x=')
+aoc.replaceLines(' y=')
+aoc.replaceLines(': closest beacon is at x=', ',')
+aoc.parseLines(lambda line : [int(x) for x in line.split(',')])
 
 beacon = {}
 minX, maxX = 0,0
-for line in LINES:
+for line in aoc.LINES:
   sX,sY,bX,bY = line
   beacon[(sX,sY)] = (bX,bY,abs(sX-bX)+abs(sY-bY))
   minX = min(minX, sX, bX)
@@ -44,14 +48,12 @@ def problem1(y, minX, maxX):
 
   return answer
 
-
 # 2.
 # ----------------------------------------
 def problem2():
   mmm = 4000000
   for y in range(mmm+1):
     r = problem1(y, 0, mmm)
-
 
 # ----------------------------------------
 if __name__ == '__main__':

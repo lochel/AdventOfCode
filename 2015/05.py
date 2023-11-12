@@ -1,9 +1,6 @@
 #!../.env/bin/python3
 
-import sys
-
-input_file = sys.argv[1] if len(sys.argv) > 1 else '05.in'
-LINES = [line.strip() for line in open(input_file)]
+import aoc
 
 def isNice(s: str):
   # It contains at least three vowels (aeiou only), like aei, xazegov,
@@ -60,7 +57,7 @@ def isNice2(s: str):
 # ----------------------------------------
 def problem1():
   answer = 0
-  for line in LINES:
+  for line in aoc.LINES:
     if isNice(line): answer += 1
   print(f'Answer 1: {answer}')
 
@@ -68,7 +65,7 @@ def problem1():
 # ----------------------------------------
 def problem2():
   answer = 0
-  for line in LINES:
+  for line in aoc.LINES:
     if isNice2(line): answer += 1
   print(f'Answer 2: {answer}')
 

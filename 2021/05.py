@@ -1,18 +1,12 @@
 #!../.env/bin/python3
 
-import sys
-
-input_file = sys.argv[1] if len(sys.argv) > 1 else '05.in'
-LINES = [line.strip() for line in open(input_file)]
-N = len(LINES)
-print(f'input contains {N} lines')
-
+import aoc
 
 # 1. At how many points do at least two lines overlap?
 # --------------------------------------
 def problem1():
   count = {}
-  for line in LINES:
+  for line in aoc.LINES:
     [a, b] = line.split(' -> ')
     a = [int(i) for i in a.split(',')]
     b = [int(i) for i in b.split(',')]
@@ -32,12 +26,11 @@ def problem1():
 
   return len(list(filter(lambda score: score > 1, list(count.values()))))
 
-
 # 2.
 # --------------------------------------
 def problem2():
   count = {}
-  for line in LINES:
+  for line in aoc.LINES:
     [a, b] = line.split(' -> ')
     a = [int(i) for i in a.split(',')]
     b = [int(i) for i in b.split(',')]
@@ -64,7 +57,6 @@ def problem2():
           count[(a[0] + z*dx, a[1] + z*dy)] = 1
 
   return len(list(filter(lambda score: score > 1, list(count.values()))))
-
 
 # --------------------------------------
 if __name__ == '__main__':

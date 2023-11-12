@@ -110,7 +110,6 @@ def problem1():
   answer = solve((1, 0), (WIDTH-2,HIGHT-1), 0)
   print(f'Answer 1: {answer}')
 
-
 # 2.
 # ----------------------------------------
 def problem2():
@@ -118,7 +117,6 @@ def problem2():
   answer = solve((WIDTH-2,HIGHT-1), (1, 0), answer)
   answer = solve((1, 0), (WIDTH-2,HIGHT-1), answer)
   print(f'Answer 2: {answer}')
-
 
 # ----------------------------------------
 if __name__ == '__main__':

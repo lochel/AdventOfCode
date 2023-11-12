@@ -2,15 +2,13 @@
 
 import aoc
 
-
-LINES = aoc.parseLines(lambda line : line.split())
-
+aoc.parseLines(lambda line : line.split())
 
 # 1. Find the signal strength during the 20th, 60th, 100th, 140th, 180th, and 220th cycles.
 # ----------------------------------------
 def problem1():
   cycle = [1]
-  for line in LINES:
+  for line in aoc.LINES:
     x = cycle[-1]
     if line[0] == 'noop':
       cycle.append(x)
@@ -20,12 +18,11 @@ def problem1():
   answer = sum([cycle[t-1]*t for t in [20, 60, 100, 140, 180, 220]])
   print(f'Answer 1: {answer}')
 
-
 # 2. What eight capital letters appear on your CRT?
 # ----------------------------------------
 def problem2():
   cycle = [1]
-  for line in LINES:
+  for line in aoc.LINES:
     x = cycle[-1]
     if line[0] == 'noop':
       cycle.append(x)
@@ -41,7 +38,6 @@ def problem2():
     if i == 39:
       print(''.join(row))
       row = 40*['#']
-
 
 # --------------------------------------
 if __name__ == '__main__':

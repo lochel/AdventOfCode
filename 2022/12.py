@@ -8,7 +8,6 @@ sys.setrecursionlimit(10000)
 MAX_Y = len(LINES)
 MAX_X = len(LINES[0])
 
-
 # 1. What is the fewest steps required to move from your current position to the location that should get the best signal?
 # ------------------------------------------------------------------------------
 def problem1():
@@ -56,7 +55,6 @@ def problem1():
   next(S, 0, map, E, visited)
   print('Answer 1: ', min(SOLUTION))
 
-
 # 2. What is the fewest steps required to move starting from any square with elevation a to the location that should get the best signal?
 # ------------------------------------------------------------------------------
 def problem2():
@@ -101,7 +99,6 @@ def problem2():
 
   next(E, 0, map, visited)
   print('Answer 2: ', min(SOLUTION))
-
 
 # ------------------------------------------------------------------------------
 if __name__ == '__main__':

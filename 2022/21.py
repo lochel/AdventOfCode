@@ -1,20 +1,15 @@
 #!../.env/bin/python3
 
-import math
-from collections import deque
-
 import aoc
 
-LINES = aoc.parseLines(lambda line : line.replace(':', '').split())
-N = aoc.N
-
+aoc.parseLines(lambda line : line.replace(':', '').split())
 
 # 1.
 # ----------------------------------------
 def problem1():
   monkeys = {}
   numbers = {}
-  for line in LINES:
+  for line in aoc.LINES:
     if len(line) == 4:
       monkeys[line[0]] = (line[1], line[2], line[3])
     elif len(line) == 2:
@@ -62,7 +57,7 @@ def problem1():
 def problem2():
   monkeys = {}
   numbers = {}
-  for line in LINES:
+  for line in aoc.LINES:
     if line[0] == 'humn':
       numbers[line[0]] = 'x'
     elif len(line) == 4:
@@ -123,7 +118,6 @@ def problem2():
     #print(f'{x=} | {y=}')
 
   print(f"Answer 2: {round(x)}")
-
 
 # ----------------------------------------
 if __name__ == '__main__':

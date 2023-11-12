@@ -132,18 +132,15 @@ def playTetris(number_of_rocks):
   #printTower(tower)
   return len(tower)-1+offset_h
 
-
 # 1. How many units tall will the tower of rocks be after 2022 rocks have stopped falling?
 # ----------------------------------------
 def problem1():
   print(f'Answer 1: {playTetris(2022)}')
 
-
 # 2. How tall will the tower be after 1000000000000 rocks have stopped?
 # ----------------------------------------
 def problem2():
   print(f'Answer 2: {playTetris(1000000000000)}')
-
 
 # ----------------------------------------
 if __name__ == '__main__':

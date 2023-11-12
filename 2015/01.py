@@ -1,15 +1,12 @@
 #!../.env/bin/python3
 
-import sys
-
-input_file = sys.argv[1] if len(sys.argv) > 1 else '01.in'
-LINES = [list(line.strip()) for line in open(input_file)]
+import aoc
 
 # 1. To what floor do the instructions take Santa?
 # ----------------------------------------
 def problem1():
   floor = 0
-  for idx,dir in enumerate(LINES[0]):
+  for idx,dir in enumerate(aoc.DATA):
     if dir == '(': floor += 1
     elif dir == ')': floor -= 1
     else: assert False, dir
@@ -19,7 +16,7 @@ def problem1():
 # ----------------------------------------
 def problem2():
   floor = 0
-  for idx,dir in enumerate(LINES[0]):
+  for idx,dir in enumerate(aoc.DATA):
     if dir == '(': floor += 1
     elif dir == ')': floor -= 1
     else: assert False, dir

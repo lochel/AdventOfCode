@@ -2,15 +2,14 @@
 
 import aoc
 
-LINES = aoc.parseLines(lambda line: line.split())
-
+aoc.parseLines(lambda line: line.split())
 
 # 1. What is the sum of the total sizes of those directories?
 # --------------------------------------
 def problem1():
   dirs = {}
   cur = []
-  for line in LINES:
+  for line in aoc.LINES:
     if line[0] == '$':
       if line[1] == 'cd':
         if line[2] == '..':
@@ -22,7 +21,7 @@ def problem1():
 
   cur = []
   d = []
-  for line in LINES:
+  for line in aoc.LINES:
     if line[0] == '$':
       if line[1] == 'cd':
         if line[2] == '..':
@@ -58,7 +57,7 @@ def sort_depth(e):
 def problem2():
   dirs = {'/': 0}
   cur = []
-  for line in LINES:
+  for line in aoc.LINES:
     if line[0] == '$':
       if line[1] == 'cd':
         if line[2] == '..':
@@ -70,7 +69,7 @@ def problem2():
 
   cur = []
   d = []
-  for line in LINES:
+  for line in aoc.LINES:
     if line[0] == '$':
       if line[1] == 'cd':
         if line[2] == '..':
@@ -102,7 +101,6 @@ def problem2():
       answer = dirs[x]
 
   return answer
-
 
 # --------------------------------------
 if __name__ == '__main__':

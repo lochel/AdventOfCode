@@ -2,7 +2,7 @@
 
 import aoc
 
-LINES = aoc.parseLines(lambda line : line.split(' '))
+aoc.parseLines(lambda line : line.split(' '))
 
 # --------------------------------------
 def RockPaperScissors(player1, player2):
@@ -35,7 +35,7 @@ def CalcMove(player2, res):
 
 # --------------------------------------
 answer1, answer2 = 0, 0
-for [a, b] in LINES:
+for [a, b] in aoc.LINES:
   # part 1
   # Input A/X: Rock
   # Input B/Y: Paper

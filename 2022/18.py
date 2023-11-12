@@ -1,16 +1,16 @@
 #!../.env/bin/python3
 
 import aoc
-LINES = aoc.parseLines(lambda line : line.split(','))
+aoc.parseLines(lambda line : line.split(','))
 
 LAVA = set()
-for x,y,z in LINES:
+for x,y,z in aoc.LINES:
   x,y,z = int(x),int(y),int(z)
   LAVA.add((x,y,z))
 
-bx = (min([int(x) for x,_,_ in LINES]), max([int(x) for x,_,_ in LINES]))
-by = (min([int(y) for _,y,_ in LINES]), max([int(y) for _,y,_ in LINES]))
-bz = (min([int(z) for _,_,z in LINES]), max([int(z) for _,_,z in LINES]))
+bx = (min([int(x) for x,_,_ in aoc.LINES]), max([int(x) for x,_,_ in aoc.LINES]))
+by = (min([int(y) for _,y,_ in aoc.LINES]), max([int(y) for _,y,_ in aoc.LINES]))
+bz = (min([int(z) for _,_,z in aoc.LINES]), max([int(z) for _,_,z in aoc.LINES]))
 
 INSIDE = set()
 OUTSIDE = set()
@@ -47,7 +47,6 @@ def isOutside(x, y, z):
   INSIDE = INSIDE.union(P)
   return False
 
-
 # 1. What is the surface area of your scanned lava droplet?
 # ----------------------------------------
 def problem1():
@@ -62,7 +61,6 @@ def problem1():
         surface += 1
 
   print(f'Answer 1: {surface}')
-
 
 # 2. What is the exterior surface area of your scanned lava droplet?
 # ----------------------------------------
