@@ -1,13 +1,11 @@
 #!../.env/bin/python3
 
-import os.path
-import sys
 from math import prod
+import aoc
 
-input_file = sys.argv[1] if len(sys.argv) > 1 else os.path.splitext(sys.argv[0])[0] + '.in'
-LINES = [line.strip().split() for line in open(input_file)]
-N = len(LINES)
-print(f'input contains {N} lines')
+
+LINES = aoc.parseLines(lambda line : line.split())
+N = aoc.N
 
 
 # 1. What is the level of monkey business after 20 rounds of stuff-slinging simian shenanigans?

@@ -1,6 +1,6 @@
 #!../.env/bin/python3
 
-from aoc import LINES, N
+from aoc import LINES
 
 SHAPE1 = [['#','#','#','#']]
 

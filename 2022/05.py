@@ -1,14 +1,9 @@
 #!../.env/bin/python3
 
-LINES = [line.rstrip() for line in open('05.in')]
-for line in LINES[:3]:
-  print(line)
+import aoc
 
-N = len(LINES)
-print(f'input contains {N} lines')
-
-EMPTY = [i for i,line in enumerate(LINES) if not line]
-print(f'empty lines: {EMPTY}')
+LINES = aoc.LINES
+EMPTY = aoc.EMPTY
 
 
 # 1.

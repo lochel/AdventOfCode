@@ -1,17 +1,14 @@
 #!../.env/bin/python3
 
-import os.path
-import sys
+import aoc
 
-input_file = sys.argv[1] if len(sys.argv) > 1 else os.path.splitext(sys.argv[0])[0] + '.in'
-LINES = [line.strip().split() for line in open(input_file)]
-N = len(LINES)
-print(f'input contains {N} lines')
+
+LINES = aoc.parseLines(lambda line : line.split())
 
 
 # 1. Find the signal strength during the 20th, 60th, 100th, 140th, 180th, and 220th cycles.
 # ----------------------------------------
-def problem1(LINES):
+def problem1():
   cycle = [1]
   for line in LINES:
     x = cycle[-1]
@@ -20,12 +17,13 @@ def problem1(LINES):
     elif line[0] == 'addx':
       cycle.append(x)
       cycle.append(x + int(line[1]))
-  return sum([cycle[t-1]*t for t in [20, 60, 100, 140, 180, 220]])
+  answer = sum([cycle[t-1]*t for t in [20, 60, 100, 140, 180, 220]])
+  print(f'Answer 1: {answer}')
 
 
 # 2. What eight capital letters appear on your CRT?
 # ----------------------------------------
-def problem2(LINES):
+def problem2():
   cycle = [1]
   for line in LINES:
     x = cycle[-1]
@@ -35,6 +33,7 @@ def problem2(LINES):
       cycle.append(x)
       cycle.append(x + int(line[1]))
 
+  print(f'Answer 2:')
   row = 40*['?']
   for j,x in enumerate(cycle):
     i = j % 40
@@ -46,5 +45,5 @@ def problem2(LINES):
 
 # --------------------------------------
 if __name__ == '__main__':
-  print(f'Answer 1: {problem1(LINES)}')
-  print(f'Answer 2: {problem2(LINES)}\n')
+  problem1()
+  problem2()

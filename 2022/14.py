@@ -5,8 +5,8 @@ from math import prod
 
 import aoc
 
-LINES = [line.split(' -> ') for line in aoc.LINES]
-N = len(LINES)
+LINES = aoc.parseLines(lambda line : line.split(' -> '))
+N = aoc.N
 
 
 # 1. How many units of sand come to rest before sand starts flowing into the abyss below?

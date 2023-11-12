@@ -2,8 +2,15 @@
 
 import aoc
 
-LINES = [line.strip().replace('Blueprint', '').replace(': Each ore robot costs', ',').replace(
-  'ore. Each clay robot costs', ',').replace('ore. Each obsidian robot costs', ',').replace('clay. Each geode robot costs', ',').replace('ore and', ',').replace('obsidian.', '').replace(' ', '').split(',') for line in aoc.LINES]
+aoc.replaceLines('Blueprint')
+aoc.replaceLines(': Each ore robot costs', ',')
+aoc.replaceLines('ore. Each clay robot costs', ',')
+aoc.replaceLines('ore. Each obsidian robot costs', ',')
+aoc.replaceLines('clay. Each geode robot costs', ',')
+aoc.replaceLines('ore and', ',')
+aoc.replaceLines('obsidian.')
+aoc.replaceLines(' ')
+LINES = aoc.parseLines(lambda line : line.split(','))
 
 
 def enough_money(money, costs):

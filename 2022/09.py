@@ -1,12 +1,8 @@
 #!../.env/bin/python3
 
-import os.path
-import sys
+import aoc
 
-input_file = sys.argv[1] if len(sys.argv) > 1 else os.path.splitext(sys.argv[0])[0] + '.in'
-LINES = [line.strip().split() for line in open(input_file)]
-N = len(LINES)
-print(f'input contains {N} lines')
+LINES = aoc.parseLines(lambda line : line.split())
 
 
 # 1. How many positions does the tail of the rope visit at least once?

@@ -1,15 +1,6 @@
 #!../.env/bin/python3
 
-import itertools
-import math
-import os.path
-import sys
-from collections import defaultdict
-
-input_file = sys.argv[1] if len(sys.argv) > 1 else os.path.splitext(sys.argv[0])[0] + '.in'
-LINES = [line.strip() for line in open(input_file)]
-N = len(LINES)
-print(f'input contains {N} lines')
+from aoc import LINES, N
 
 
 # 1.

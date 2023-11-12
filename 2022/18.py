@@ -1,7 +1,7 @@
 #!../.env/bin/python3
 
-from aoc import LINES, N
-LINES = [line.split(',') for line in LINES]
+import aoc
+LINES = aoc.parseLines(lambda line : line.split(','))
 
 LAVA = set()
 for x,y,z in LINES:
