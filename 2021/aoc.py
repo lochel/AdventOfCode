@@ -24,17 +24,21 @@ def _get_input_data():
   data = open(input_file).read().rstrip()
   lines = data.split('\n')
   number_of_lines = len(lines)
+  width = [len(line) for line in lines]
+  width = min(width) if min(width) == max(width) else None
   empty = [i for i,line in enumerate(lines) if not line]
 
   if print_input:
     print(data)
     print()
 
-  print(f'Advent of Code {year}/{day:02} [https://adventofcode.com/{year}/day/{day}]')
-  print(f'Input file \'{input_file}\' contains {number_of_lines} lines and {len(empty)} empty lines.\n')
-  return data, lines, number_of_lines, empty
+  width_str = f', each with a width of {width} characters' if width else ''
 
-DATA, LINES, N, EMPTY = _get_input_data()
+  print(f'Advent of Code {year}/{day:02} [https://adventofcode.com/{year}/day/{day}]')
+  print(f'The input file \'{input_file}\' contains a total of {number_of_lines} lines{width_str}, and {len(empty)} of these lines are empty.\n')
+  return data, lines, number_of_lines, width, empty
+
+DATA, LINES, N, M, EMPTY = _get_input_data()
 
 def parseLines(f):
   return [f(line.rstrip()) for line in LINES]
