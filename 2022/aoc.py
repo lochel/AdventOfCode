@@ -27,3 +27,6 @@ def _get_input_data():
   return data, lines, number_of_lines
 
 DATA, LINES, N = _get_input_data()
+
+def parseLines(f):
+  return [f(line.strip()) for line in LINES]
