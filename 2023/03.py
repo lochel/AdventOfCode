@@ -8,62 +8,40 @@ import aoc
 LINES = aoc.LINES
 
 def adjacent_symbol(x, y):
-  A = []
-  A.append((x-1, y-1))
-  A.append((x  , y-1))
-  A.append((x+1, y-1))
-  A.append((x-1, y))
-  A.append((x+1, y))
-  A.append((x-1, y+1))
-  A.append((x  , y+1))
-  A.append((x+1, y+1))
+  A = aoc.get_neighbors(x, y)
 
   for (x, y) in A:
-    if x >= 0 and x<aoc.N:
-      if y >= 0 and y<aoc.M:
-        if LINES[y][x] not in '0123456789.':
-          return True
+    if LINES[y][x] not in '0123456789.':
+      return True
   return False
 
 def might_be_gear(x, y):
-  A = []
-  A.append((x-1, y-1))
-  A.append((x  , y-1))
-  A.append((x+1, y-1))
-  A.append((x-1, y))
-  A.append((x+1, y))
-  A.append((x-1, y+1))
-  A.append((x  , y+1))
-  A.append((x+1, y+1))
+  A = aoc.get_neighbors(x, y)
 
   for (x, y) in A:
-    if x >= 0 and x<aoc.N:
-      if y >= 0 and y<aoc.M:
-        if LINES[y][x] in '*':
-          return True, (x, y)
-  return False, (-1, -1)
+    if LINES[y][x] in '*':
+      return True, (x, y)
+  return False, None
 
 # 1.
 # ----------------------------------------
 def problem1():
   answer = 0
-  for y in range(aoc.M):
-    number = ''
-    part = False
-    for x in range(aoc.N):
-      if LINES[y][x] in '0123456789':
-        number += LINES[y][x]
-        part = part or adjacent_symbol(x, y)
-      elif number != '':
+  for (x, y) in aoc.Grid(LINES):
+    if x == 0:
+      number = ''
+      part = False
+
+    if LINES[y][x] in '0123456789':
+      number += LINES[y][x]
+      part = part or adjacent_symbol(x, y)
+
+    if LINES[y][x] not in '0123456789' or x+1 == aoc.M:
+      if number != '':
         if part:
           answer += int(number)
         number = ''
         part = False
-    if number != '':
-      if part:
-        answer += int(number)
-      number = ''
-      part = False
 
   print(f'Answer 1: {answer}')
 
@@ -71,29 +49,26 @@ def problem1():
 # ----------------------------------------
 def problem2():
   gear_ratio = defaultdict(list)
-  for y in range(aoc.M):
-    number = ''
-    star = False
-    starpos = (-1, -1)
-    for x in range(aoc.N):
-      if LINES[y][x] in '0123456789':
-        number += LINES[y][x]
-        a, b = might_be_gear(x, y)
-        if a:
-          star = True
-          starpos = b
-      elif number != '':
-        if star:
-          gear_ratio[starpos].append(int(number))
-        number = ''
-        star = False
-        starpos = (-1, -1)
-    if number != '':
-      if star:
-        gear_ratio[starpos].append(int(number))
+  for (x, y) in aoc.Grid(LINES):
+    if x == 0:
       number = ''
-      star = False
-      starpos = (-1, -1)
+      gear = False
+      pos = None
+
+    if LINES[y][x] in '0123456789':
+      number += LINES[y][x]
+      a, b = might_be_gear(x, y)
+      if a:
+        gear = True
+        pos = b
+
+    if LINES[y][x] not in '0123456789' or x+1 == aoc.M:
+      if number != '':
+        if gear:
+          gear_ratio[pos].append(int(number))
+        number = ''
+        gear = False
+        pos = None
 
   answer = 0
   for gear in gear_ratio.values():

@@ -45,3 +45,40 @@ def parseLines(LINES, f):
 
 def replaceLines(LINES, A, B=''):
   return [line.replace(A, B) for line in LINES]
+
+def get_neighbors(x, y, diagonals=True, check_bounds=True):
+  if diagonals:
+    neighbors = [(x-1, y-1), (x, y-1), (x+1, y-1), (x-1, y), (x+1, y), (x-1, y+1), (x, y+1), (x+1, y+1)]
+  else:
+    neighbors = [(x, y-1), (x-1, y), (x+1, y), (x, y+1)]
+
+  if check_bounds:
+    neighbors = list(filter(lambda neighbor: neighbor[0] >= 0 and neighbor[0] < N and neighbor[1] >= 0 and neighbor[1] < M, neighbors))
+
+  return neighbors
+
+class Grid:
+  def __init__(self, grid):
+    self.N = len(grid)
+    width = [len(line) for line in grid]
+    self.M = min(width) if min(width) == max(width) else None
+    assert self.M is not None, "Bad row length in grid"
+    self.current = (-1, 0)
+
+  def __iter__(self):
+    return self
+
+  def __next__(self):
+    (x, y) = self.current
+    x += 1
+
+    if x >= self.M:
+      x = 0
+      y += 1
+
+    self.current = (x, y)
+
+    if y < self.N:
+      return self.current
+
+    raise StopIteration
