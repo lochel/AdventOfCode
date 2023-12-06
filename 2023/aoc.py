@@ -27,6 +27,7 @@ def _get_input_data():
   width = [len(line) for line in lines]
   width = min(width) if min(width) == max(width) else None
   empty = [i for i,line in enumerate(lines) if not line]
+  chunks = [c.split('\n') for c in data.split('\n\n')]
 
   if print_input:
     print(data)
@@ -36,9 +37,9 @@ def _get_input_data():
 
   print(f'Advent of Code {year}/{day:02} [https://adventofcode.com/{year}/day/{day}]')
   print(f'The input file \'{input_file}\' contains {number_of_lines} lines{width_str}, and {len(empty)} of these lines are empty.\n')
-  return data, lines, number_of_lines, width, empty
+  return data, lines, number_of_lines, width, empty, chunks
 
-DATA, LINES, N, M, EMPTY = _get_input_data()
+DATA, LINES, N, M, EMPTY, CHUNKS = _get_input_data()
 
 def parseLines(LINES, f):
   return [f(line.rstrip()) for line in LINES]
