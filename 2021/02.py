@@ -2,12 +2,12 @@
 
 import aoc
 
-aoc.parseLines(lambda line : line.split(' '))
+LINES = aoc.parseLines(aoc.LINES, lambda line : line.split(' '))
 
 # 1.
 # ----------------------------------------
 x, z, aim = 0, 0, 0
-for [cmd, value] in aoc.LINES:
+for [cmd, value] in LINES:
   value = int(value)
   if cmd == 'forward':
     x += value
@@ -24,7 +24,7 @@ print(f'Answer 1: {x*z}')
 # 2.
 # ----------------------------------------
 x, z, aim = 0, 0, 0
-for [cmd, value] in aoc.LINES:
+for [cmd, value] in LINES:
   value = int(value)
   if cmd == 'forward':
     x += value

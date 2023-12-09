@@ -62,7 +62,6 @@ def problem2():
          size = len(Q)
          basins.append(size)
   basins = sorted(basins, reverse=True)
-  print(basins[:3])
   answer = math.prod(basins[:3])
   print(f'Answer 2: {answer}')
 
