@@ -47,14 +47,18 @@ def parseLines(LINES, f):
 def replaceLines(LINES, A, B=''):
   return [line.replace(A, B) for line in LINES]
 
-def get_neighbors(x, y, diagonals=True, check_bounds=True):
+def get_neighbors(x, y, diagonals=True, check_bounds=True, maxX=None, maxY=None):
   if diagonals:
     neighbors = [(x-1, y-1), (x, y-1), (x+1, y-1), (x-1, y), (x+1, y), (x-1, y+1), (x, y+1), (x+1, y+1)]
   else:
     neighbors = [(x, y-1), (x-1, y), (x+1, y), (x, y+1)]
 
   if check_bounds:
-    neighbors = list(filter(lambda neighbor: neighbor[0] >= 0 and neighbor[0] < N and neighbor[1] >= 0 and neighbor[1] < M, neighbors))
+    if not maxX:
+      maxX = M
+    if not maxY:
+      maxY = N
+    neighbors = list(filter(lambda neighbor: neighbor[0] >= 0 and neighbor[0] < maxX and neighbor[1] >= 0 and neighbor[1] < maxY, neighbors))
 
   return neighbors
 
