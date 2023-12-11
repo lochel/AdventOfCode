@@ -87,3 +87,19 @@ class Grid:
       return self.current
 
     raise StopIteration
+
+def makeGrid(x, y, default_value):
+  grid = []
+  for _ in range(y):
+    grid.append([default_value] * x)
+  return grid
+
+def printGrid(grid, delimiter=' '):
+  size = 0
+  for line in grid:
+    size = max(size, *[len(str(value)) for value in line])
+
+  buffer = ''
+  for line in grid:
+    buffer += delimiter.join([f'{value:>{size}}' for value in line]) + '\n'
+  print(buffer)
