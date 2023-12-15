@@ -1,5 +1,7 @@
 #!../.env/bin/python3
 
+from functools import reduce
+
 import aoc
 
 def hash(s):
@@ -14,8 +16,7 @@ def hash(s):
 # ----------------------------------------
 def problem1():
   steps = aoc.DATA.split(',')
-
-  answer = sum([hash(step) for step in steps])
+  answer = reduce(lambda a,b: a + hash(b), steps, 0)
   print(f'Answer 1: {answer}')
 
 # 2.
