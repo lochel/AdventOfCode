@@ -1,69 +1,66 @@
 #!../.env/bin/python3
 
-import sys
+from collections import deque
 
 import aoc
 
-sys.setrecursionlimit(10000)
-
 GRID = aoc.parseLines(aoc.LINES, lambda line : [int(x) for x in list(line)])
 
-solution = []
-CACHE = {}
+def step(part2):
+  solution = None
+  CACHE = {}
 
-def step(x, y, xdir, ydir, count, heat, part2):
-  if not (0<=x<aoc.M and 0<=y<aoc.N):
-    return
+  Q = deque([(0, 0, 1, 0, 0, -GRID[0][0]), (0, 0, 0, 1, 0, -GRID[0][0])])
 
-  new_heat = heat + GRID[y][x]
+  while Q:
+    if not solution: # heuristic to find a solution quickly
+      Q = deque(sorted(Q, key=lambda state: state[0] + state[1]))
+    (x, y, xdir, ydir, count, heat) = Q.pop()
 
-  state = (x, y, xdir, ydir, count)
-  if state in CACHE and new_heat >= CACHE[state]:
-    return
+    if not (0<=x<aoc.M and 0<=y<aoc.N):
+      continue
 
-  CACHE[state] = new_heat
+    new_heat = heat + GRID[y][x]
 
-  if solution and new_heat >= min(solution):
-    return
+    state = (x, y, xdir, ydir, count)
+    if state in CACHE and new_heat >= CACHE[state]:
+      continue
 
-  max_count = 9 if part2 else 2
-  min_count = 3 if part2 else 0
+    CACHE[state] = new_heat
 
-  if x == aoc.M-1 and y == aoc.N-1 and count >= min_count:
-    print("Reached goal", new_heat)
-    solution.append(new_heat)
-    return
+    if solution and new_heat >= solution:
+      continue
 
-  if count < max_count:
-    step(x+xdir, y+ydir, xdir, ydir, count+1, new_heat, part2)
-  if xdir == 0 and count >= min_count:
-    step(x+1, y, +1, 0, 0, new_heat, part2)
-    step(x-1, y, -1, 0, 0, new_heat, part2)
-  if ydir == 0 and count >= min_count:
-    step(x, y+1, 0, +1, 0, new_heat, part2)
-    step(x, y-1, 0, -1, 0, new_heat, part2)
+    max_count = 9 if part2 else 2
+    min_count = 3 if part2 else 0
+
+    if x == aoc.M-1 and y == aoc.N-1 and count >= min_count:
+      print(f"Best guess so far: {new_heat}, {len(Q):<10}", end='\r')
+      solution = new_heat
+      continue
+
+    if xdir == 0 and count >= min_count:
+      Q.append((x+1, y, +1, 0, 0, new_heat))
+      Q.append((x-1, y, -1, 0, 0, new_heat))
+    if ydir == 0 and count >= min_count:
+      Q.append((x, y+1, 0, +1, 0, new_heat))
+      Q.append((x, y-1, 0, -1, 0, new_heat))
+    if count < max_count:
+      Q.append((x+xdir, y+ydir, xdir, ydir, count+1, new_heat))
+
+  return solution
 
 # 1.
 # ----------------------------------------
 def problem1():
-  solution.clear()
-  solution.append(800)
-  CACHE.clear()
-  step(0, 0, 1, 0, 0, -GRID[0][0], False)
-  step(0, 0, 0, 1, 0, -GRID[0][0], False)
-  answer = min(solution)
-  print(f'Answer 1: {answer}')
+  answer = step(False)
+  print(f'Answer 1: {answer:<20}')
 
 # 2.
 # ----------------------------------------
 def problem2():
-  solution.clear()
-  solution.append(1000)
-  CACHE.clear()
-  step(0, 0, 1, 0, 0, -GRID[0][0], True)
-  step(0, 0, 0, 1, 0, -GRID[0][0], True)
-  answer = min(solution)
-  print(f'Answer 2: {answer}')
+  answer = step(True)
+  print(f'Answer 2: {answer:<20}')
 
 # ----------------------------------------
 if __name__ == '__main__':
