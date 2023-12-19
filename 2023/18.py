@@ -1,9 +1,16 @@
 #!../.env/bin/python3
 
 import aoc
-from shapely.geometry import Polygon
 
 LINES = aoc.parseLines(aoc.LINES, lambda line: line.split())
+
+def PolygonArea(points):
+  n = len(points)
+  area = 0
+  for i in range(n):
+    j = (i + 1) % n
+    area += points[i][0] * points[j][1] - points[j][0] * points[i][1]
+  return abs(area) // 2
 
 # 1.
 # ----------------------------------------
@@ -26,7 +33,7 @@ def problem1():
     points.append((x, y))
     circumference += dist
 
-  answer = int(Polygon(points).area + circumference/2 + 1)
+  answer = PolygonArea(points) + circumference//2 + 1
   print(f'Answer 1: {answer}')
 
 # 2.
@@ -51,7 +58,7 @@ def problem2():
     circumference += dist
     points.append((x, y))
 
-  answer = int(Polygon(points).area + circumference/2 + 1)
+  answer = PolygonArea(points) + circumference//2 + 1
   print(f'Answer 2: {answer}')
 
 # ----------------------------------------
