@@ -4,7 +4,7 @@ def _get_input_data():
   import sys
 
   year = int(__file__.split('/')[-2])
-  day = int(sys.argv[0][2:4])
+  day = int(sys.argv[0][-5:-3])
 
   assert 1 <= day <= 25, f"Invalid day: {day}"
   assert 2015 <= year, f"Invalid year: {year}"
