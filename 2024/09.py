@@ -1,7 +1,6 @@
 #!../.env/bin/python3
 
 import aoc
-import itertools
 
 # 1.
 # ----------------------------------------
@@ -22,7 +21,7 @@ def problem1():
         filesystem.append(None)
     i += 1
 
-  print(filesystem)
+  #print(filesystem)
 
   a = filesystem.index(None)
   i = len(filesystem) - 1
@@ -32,8 +31,7 @@ def problem1():
       a = filesystem.index(None)
     i -= 1
 
-  print(filesystem)
-
+  #print(filesystem)
 
   answer = 0
   for i,x in enumerate(filesystem):
@@ -44,6 +42,15 @@ def problem1():
 # 2.
 # ----------------------------------------
 def problem2():
+  def printFilesystem(filesystem_id, filesystem_size, filesystem_start):
+    pos = 0
+    for _i,x,p in zip(filesystem_id, filesystem_size, filesystem_start):
+      if pos < p:
+        print('.' * (p-pos), end='')
+      print(str(_i) * x, end='')
+      pos = p + x
+    print('.' * (filesystem_start[-1]-pos))
+
   data = aoc.DATA
 
   filesystem_id = []
@@ -58,17 +65,18 @@ def problem2():
       filesystem_id.append(i//2)
       filesystem_size.append(x)
       filesystem_start.append(pos)
-      pos += x
-    else:
-      pos += x
+    pos += x
     i += 1
   filesystem_start.append(pos)
+
+  #printFilesystem(filesystem_id, filesystem_size, filesystem_start)
 
   i = len(filesystem_id) - 1
   while i > 0:
     id = filesystem_id[i]
     length = filesystem_size[i]
     pos = filesystem_start[i]
+
     a = 0
     while a != i and filesystem_start[a+1] - filesystem_start[a] - filesystem_size[a] < length:
       a += 1
@@ -87,12 +95,7 @@ def problem2():
     filesystem_start.insert(a+1, pos)
     filesystem_start[a+1] = filesystem_start[a] + filesystem_size[a]
 
-    #print(a, i, length)
-    #print(filesystem_id)
-    #print(filesystem_size)
-    #print(filesystem_start)
-
-    i -= 1
+    #printFilesystem(filesystem_id, filesystem_size, filesystem_start)
 
   answer = 0
   for i,x,p in zip(filesystem_id, filesystem_size, filesystem_start):
@@ -102,5 +105,5 @@ def problem2():
 
 # ----------------------------------------
 if __name__ == '__main__':
-  #problem1()
+  problem1()
   problem2()
